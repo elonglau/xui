@@ -1,0 +1,450 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>XUI | The Common Front-end Framework For Corp </title>
+    <link rel="stylesheet" type="text/css" href="css/doc.css">
+    <link rel="stylesheet" href="css/base.css">
+    
+    <script src="modules/jquery-2.1.3.min.js"></script>
+    <script src="modules/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+    <header>
+        <h1><a href="###">商旅XUI</a></h1>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="###">Support</a></li>
+                <li><a href="###">Docs</a></li>
+                <li><a href="###">Getting Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="doc-container">
+        <aside class="doc-sidebar">
+            <nav>
+                <ul class="doc-menu">
+                    <li class=""><a href="#s1">Getting Started</a></li>
+                    <li class="heading"><a href="#s2">代码规范</a></li>
+                    <li><a href="#s21">命名规则</a></li>
+                    <li><a href="#s22">HTML</a></li>
+                    <li><a href="#s23">CSS</a></li>                    
+                    <li class="heading"><a href="#s3">页面组件</a></li>
+                    <li><a href="#s31">浏览器重置Reset</a></li>
+                    <li><a href="#s32">按钮buttons</a></li>
+                    <li><a href="#s33">标识icons</a></li>                    
+                    <li><a href="#s34">模态modals</a></li>
+                    <li><a href="#s35">提示tooltips</a></li>
+                    <li class="heading"><a href="#s4">其他</a></li>
+                    <li><a href="#s41">浏览器分级</a></li>
+                    <li><a href="#s42">响应式方案</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <article class="doc-content">
+            <section class="doc-section">
+                <h2 id="s1">Getting Started</h2>
+                <h3>XUI是携程商旅前端公共样式库，旨在统一公用页面元素和规范代码风格，达到代码复用，减少重复设计；没有最好的规则，只有最适合的规则，不管团队成员多少，代码都应同出一门。</h3>
+                <div class="inner-content">
+                    <p>样式表引用方式，直接引用全模块压缩模式<code>base.css(online目前使用corphd_niv.css)</code>，或者分别使用各模块代码</p>
+                </div>
+                <hr>
+            </section>
+            <section class="doc-section">
+                <h2 id="s2">代码规范</h2>
+                <h3 id="s21">命名规则</h3>
+                <h4>项目命名</h4>
+                <div class="inner-content">
+                    <p>项目名采用小写英文单词单数形式，国际版加下划线，例如国内机票<code>flight</code>、国际机票<code>flight_int</code>；单词过长不易表达的项目用英文大写缩写，例如短信邮件授权项目<code>SME</code>；尽量简洁易懂，避免用中文拼音</p>
+                </div>
+                <h4>目录名</h4>
+                <div class="inner-content">
+                    <p>采用英文单词命名。例如</p>
+    <pre>
+    + project
+    ---_src /* 预编译源码文件 */
+    ---_include /* 功能引用代码文件 */
+    ---css /* 样式表文件 */
+    ---images /* 图片文件 */
+    ---js /* javascript文件 */
+    </pre>                        
+                    
+                </div>
+                <h4>HTML/PHP命名</h4>
+                <div class="inner-content">
+                    <p>按照页面属性或业务流程命名，以英文单词单数形式，英文版加下划线，例如中文首页<code>index.php</code>、英文首页<code>index_en.php</code></p>
+                </div>
+                <h4>CSS命名</h4>
+                <div class="inner-content">
+                    <p>采用小写英文单词加下划线组合命名，大型项目同当前页面命名规则，如<code>index.css,searchlist.css</code>；小型项目按项目或者业务名命名，如<code>cms.css</code>；英文版添加下划线，如<code>index_en.css</code></p>
+                </div>
+                <h4>JavaScript命名</h4>
+                <div class="inner-content">
+                    <p>采用小写英文单词命名，多单词时采用单驼峰式命名，如<code>index.js,myAccount.js</code></p>
+                </div>
+                <hr>
+            </section>
+            <section class="doc-section">
+                <h3 id="s22">HTML</h3>
+                <h4>语法</h4>
+                <div class="inner-content">
+                    <ul>
+                        <li>嵌套缩进使用四个空格的soft tabs——保证代码在各个环境下显示一致，sublime编辑器设置tab_size为4个空格即可。</li>
+                        <li>不要在自动闭合标签结尾处使用斜线 - HTML5 规范中指出他们是可选的，如<code>&lt;input value=""&gt;、&lt;image src=""&gt;、&lt;hr&gt;</code>。</li>
+                        <li>不要忽略可选的关闭标签，如<code>&lt;/li&gt;、&lt;/body&gt;</code>。</li>
+                    </ul>
+                </div>
+                <h4>HTML5 doctype</h4>
+                <div class="inner-content">
+                    <p>在每个页面启用html5标准的文档模式，尽可能使每个浏览器展示一致，<code>&lt;!DOCTYPE html&gt;</code>。</p>
+                    <p>虽然doctype大小写都可以，但是按照惯例，最好按照xhtml的惯例大写。</p>
+                </div>
+                <h4>字符编码</h4>
+                <div class="inner-content">
+                    <p>以html5标准声明页面的字符编码，让浏览器正确渲染网页内容，<code>&lt;meta charset="UTF-8"&gt;</code>。</p>
+                </div>
+                <h4>浏览器兼容模式</h4>
+                <div class="inner-content">
+                    <p>在元标签中声明IE兼容模式为最新版本、双核浏览器以Chrome内核渲染<br><code>&lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;</code></p>
+                </div>
+                <hr>
+            </section>
+            <section class="doc-section">
+                <h3 id="s23">CSS</h3>
+                <h4>语法</h4>
+                <div class="inner-content">
+                    <ul>
+                        <li>嵌套缩进使用四个空格的soft tabs。</li>
+                        <li>css除prefix属性外，所有声明放在一行。</li>                        
+                        <li>为了代码的易读性，在每个声明的左括号前增加一个空格。</li>
+                        <li>每条声明 : 和；后应该插入一个空格。</li>
+                        <li>所有声明应该以分号结尾。虽然最后一条声明后的分号是可选的，但是如果没有他，你的代码会更容易出错。</li>
+                        <li>sass每条声明只占一行。</li>
+                        <li>sass声明块的右括号另起一行。</li>
+                        <li>不要在颜色值中增加空格<code>rgb()</code> <code>rgba()</code> <code>hsl()</code> <code>hsla()</code>，并且不要带有取值前面不必要的0(比如，用.5替代0.5)。</li>
+                        <li>不要为0指明单位，比如用<code>margin: 0;</code>而不是<code>margin: 0px;</code>。</li>
+                        <li>颜色值尽量使用短的十六进制数值，例如使用<code>#fff</code>替代<code>#ffffff</code>。</li>
+                    </ul>
+                    <pre>
+<code> 最佳实例：
+    /* good css */
+    .selector { position: relative; top: 0; left: 10px; }
+    .selector { position: relative; top: 0; left: 10px; margin: 10px; padding: 5px;
+        -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,.5); 
+           -moz-box-shadow: 2px 2px 3px rgba(0,0,0,.5); 
+            -ms-box-shadow: 2px 2px 3px rgba(0,0,0,.5); 
+    }
+    /* good sass */
+    .sass-selector { 
+        position: relative; 
+        top: 0; 
+        left: 10px; 
+    }
+</code></pre>
+                </div>
+                <h4>声明顺序</h4>
+                <div class="inner-content">
+                    <p>相关的属性声明应该以下面的顺序分组处理：
+                        <ol>
+                            <li>1.布局定位Position</li>
+                            <li>2.合模型Box model</li>
+                            <li>3.排版Typographic</li>
+                            <li>4.外观Visual</li>
+                        </ol>
+                    </p>                    
+                </div>
+                <h4>Class命名</h4>
+                <div class="inner-content">
+                    <p>
+                        <ul>
+                            <li>保持Class命名全为小写，可以使用中横线(不要使用下划线 <code>class_name</code> 和单驼峰式 <code>className</code>命名)。</li>
+                            <li>避免过度简写。如按钮定义为<code>.s</code></li>
+                            <li>Class的命名应该尽量短，也要尽量明确。如将按钮定义为<code>.btn</code></li>
+                            <li>使用有意义的英文名称；使用结构化或者作用目标相关，而不是抽象的名称。</li>
+                            <li>命名时使用最近的父节点或者父class作为前缀。</li>
+                        </ul>
+                    </p>
+                </div>
+                <h4>代码注释</h4>
+                <div class="inner-content">
+                    <ul>
+                        <li>单行注释，内容与星号保持一个空格。</li>
+                        <li>多行注释，内容与星号保持一个空格，除首行外星号前保持一个空格。</li>
+                        <li>代码块注释，前后用大写S和E封闭。</li>
+                    </ul>
+                    <pre><code>单行注释
+/* block style */
+.block { display: block; }
+
+多行注释
+/**
+ * Components section heading
+ * Question description here some context···
+ */ 
+.block { display: block; }
+
+代码块A注释
+/* module A S */
+.moduleA { margin: 10px; padding: 5px; }
+.moduleA  .module-hd { margin: 10px; padding: 5px; }
+.moduleA  .module-bd { margin: 10px; padding: 5px; }
+/* module A E */</code></pre>
+                </div>
+                <h4>选择器</h4>
+                <div class="inner-content">
+                    <ul>
+                        <li>使用classes而不是直接使用元素标签来声明样式。</li>
+                        <li>尽量减少选择器长度，且组合选择器层级不超过三级。</li>
+                        <li>谨慎在经常出现的组件中使用低效率选择器，如<code>[class^="..."]</code>。</li>
+                    </ul>
+                    <pre><code>/* Bad example */
+div p { display: block; }
+.page-container .container-head .container-list-item  .container-item-one { ··· }
+
+/* Good example */
+.module { margin: 10px; padding: 5px; }
+.module .module-hd { margin: 10px; padding: 5px; }
+.module .module-bd .avator { margin: 10px; padding: 5px; }</code></pre>
+                </div>
+                <h4>代码组织</h4>
+                <div class="inner-content">
+                    <ul>
+                        <li>现阶段(未实现前端自动化)建议以每个页面为单位组织代码，相互之间降低耦合。</li>
+                        <li>尽量以模块化组件的方式组织代码，考虑复用性，降低耦合粒度。</li>
+                        <li>制定一个一致的注释层级结构。</li>
+                        <li>使用一致的空白来分割代码块，更利于查看大型的文件。</li>
+                    </ul>
+                </div>
+                <h4>编辑器配置</h4>
+                <div class="inner-content">
+                    <p>根据以下的设置来配置你的编辑器，来避免常见的代码不一致和丑陋的 diffs。</p>
+                    <ul>
+                        <li>使用四个空格的 soft-tabs</li>
+                        <li>在保存时删除尾部的空白字符。</li>
+                        <li>设置文件编码为 UTF-8。</li>
+                        <li>在文件结尾添加一个空白行。</li> 
+                    </ul>
+                    <p>参考：sublime_text HTMLBeautify</p>
+                </div>
+                <hr>
+            </section>
+            <section class="doc-section">
+                <h2 id="s3">页面组件</h2>
+                <h4 id="s31">浏览器重置Reset</h4>
+                <div class="inner-content">
+<pre><code>    html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,em,button{ margin: 0; padding: 0; }
+    body { color: #333; font: normal 12px/1.5 "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; -webkit-font-smoothing: antialiased; }
+    img,fieldset { border: 0; margin: 0; padding: 0; }
+    input, textarea, select { font-size: 12px; font-family: "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; }
+    table { border-collapse: collapse; border-spacing: 0; }
+    a { color:#0066cc; text-decoration: none; outline: none; }
+    a:hover { text-decoration: underline; }
+    h1,h2,h3,h4,h5 { font-weight: normal; }
+    li { list-style: none; }
+    dfn { font-style: normal; font-family: arial; }
+    i,em { font-style: normal; }   
+</code></pre>
+                </div>
+                <hr>
+                <h4 id="s32">按钮buttons</h4>
+                <div class="inner-content">
+                    <p>
+                        <button class="xui-btn xui-btn-primary xui-btn-xlg">主级按钮 &gt;</button>
+                        <button class="xui-btn xui-btn-primary xui-btn-lg">主级按钮</button>
+                        <button class="xui-btn xui-btn-primary xui-btn-xmd">主级按钮</button>
+                        <button class="xui-btn xui-btn-primary xui-btn-md">主级按钮</button>
+                        <button class="xui-btn xui-btn-primary xui-btn-sm">按钮</button>
+                        <button class="xui-btn xui-btn-primary xui-btn-xsm">按钮</button>
+                    </p>
+                    <p>
+                        <button class="xui-btn xui-btn-secondary xui-btn-xlg">次级按钮 &gt;</button>
+                        <button class="xui-btn xui-btn-secondary xui-btn-lg">次级按钮</button>
+                        <button class="xui-btn xui-btn-secondary xui-btn-xmd">次级按钮</button>
+                        <button class="xui-btn xui-btn-secondary xui-btn-md">次级按钮</button>
+                        <button class="xui-btn xui-btn-secondary xui-btn-sm">按钮</button>
+                        <button class="xui-btn xui-btn-secondary xui-btn-xsm">按钮</button>
+                    </p>
+                    <p>
+                        <button class="xui-btn xui-btn-swhite xui-btn-xsm">三级按钮 &gt;</button>
+                        <button class="xui-btn xui-btn-sblue xui-btn-xsm">三级按钮</button>
+                        <button class="xui-btn xui-btn-syellow xui-btn-xsm">三级按钮</button>
+                        <button class="xui-btn xui-btn-sblack xui-btn-xsm">三级按钮</button>
+                    </p>
+<pre>
+    <code>    
+&lt;p&gt;
+    &lt;button class="xui-btn xui-btn-primary xui-btn-xlg"&gt;主级按钮 &gt;&lt;/button&gt;
+    &lt;button class="xui-btn xui-btn-primary xui-btn-lg"&gt;主级按钮&lt;/button&gt;
+    &lt;button class="xui-btn xui-btn-primary xui-btn-xmd"&gt;主级按钮&lt;/button&gt;
+    &lt;button class="xui-btn xui-btn-primary xui-btn-md"&gt;主级按钮&lt;/button&gt;
+    &lt;button class="xui-btn xui-btn-primary xui-btn-sm"&gt;按钮&lt;/button&gt;
+    &lt;button class="xui-btn xui-btn-primary xui-btn-xsm"&gt;按钮&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;button class="xui-btn xui-btn-secondary xui-btn-xlg"&gt;次级按钮 &gt;&lt;/button&gt;
+    &lt;button class="xui-btn xui-btn-secondary xui-btn-lg"&gt;次级按钮&lt;/button&gt;
+    &lt;button class="xui-btn xui-btn-secondary xui-btn-xmd"&gt;次级按钮&lt;/button&gt;
+    &lt;button class="xui-btn xui-btn-secondary xui-btn-md"&gt;次级按钮&lt;/button&gt;
+    &lt;button class="xui-btn xui-btn-secondary xui-btn-sm"&gt;按钮&lt;/button&gt;
+    &lt;button class="xui-btn xui-btn-secondary xui-btn-xsm"&gt;按钮&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;button class="xui-btn xui-btn-swhite xui-btn-xsm"&gt;三级按钮 &gt;&lt;/button&gt;
+    &lt;button class="xui-btn xui-btn-sblue xui-btn-xsm"&gt;三级按钮&lt;/button&gt;
+    &lt;button class="xui-btn xui-btn-syellow xui-btn-xsm"&gt;三级按钮&lt;/button&gt;
+    &lt;button class="xui-btn xui-btn-sblack xui-btn-xsm"&gt;三级按钮&lt;/button&gt;
+&lt;/p&gt; 
+    </code>
+</pre>
+                </div>
+                <hr>
+                <h4 id="s33">标识icons</h4>
+                <div class="inner-content">
+                    <p>
+                        <i class="xuico-tip-xlg"></i>
+                        <i class="xuico-tip-lg"></i>
+                        <i class="xuico-tip-xmd"></i>
+                        <i class="xuico-tip-md"></i>
+                        <i class="xuico-tip-sm"></i>
+                        <i class="xuico-tip-xsm"></i>
+                    </p>
+                    
+                    <p>
+                        <i class="xuico-warn-xlg"></i>
+                        <i class="xuico-warn-lg"></i>
+                        <i class="xuico-warn-xmd"></i>
+                        <i class="xuico-warn-md"></i>
+                        <i class="xuico-warn-sm"></i>
+                        <i class="xuico-warn-xsm"></i>
+                    </p>
+
+                    <p>
+                        <i class="xuico-succes-xlg"></i>
+                        <i class="xuico-succes-lg"></i>
+                        <i class="xuico-succes-xmd"></i>
+                        <i class="xuico-succes-md"></i>
+                        <i class="xuico-succes-sm"></i>
+                    </p>
+                    
+                    <p>
+                        <i class="xuico-error-xlg"></i>
+                        <i class="xuico-error-lg"></i>
+                        <i class="xuico-error-xmd"></i>
+                        <i class="xuico-error-md"></i>
+                        <i class="xuico-error-sm"></i>
+                    </p>
+                </div>
+                <hr>
+                <h4 id="s34">模态modals</h4>
+                <div class="inner-content">
+                    <div class="xui-modal xui-modal-box" style="width: 400px;">            
+                        <div class="modal-dialog">
+                            <a href="javascript:;" class="xui-modal-close">&times;</a>
+
+                            <div class="dialog-title">
+                                模态盒子标题模态盒子标题
+                            </div>
+                            <div class="dialog-content">
+                                模态盒子内容主内容模态盒子内容主内容模态盒子内容主内容模态盒子内容主内容模态盒子内容主内容模态盒子内容主内容
+                            </div>
+                            <div class="dialog-button">
+                                <button class="xui-btn xui-btn-secondary xui-btn-md">模态按钮</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="xui-modal xui-modal-pop" style="width: 400px;">
+                        <div class="xui-modal-hd">
+                            <h4>模态标题标题</h4>
+                            <a href="javascript:;" class="xui-modal-close">&times;</a>
+                        </div>            
+                        <div class="xui-modal-bd">
+                            <p>这里是模态内容这里是模态内容这里是模态内容</p>
+                        </div>
+                        <div class="xui-modal-ft">
+                            <button class="xui-btn xui-btn-secondary xui-btn-sm">按钮</button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h4 id="s35">提示tooltips</h4>
+                <div class="inner-content">
+                    <!-- 气泡类型提示层 -->
+                    <div class="xui-tooltip-pop" style="position: relative;width: 200px;margin: 20px;">            
+                        <div class="xui-tip-content">
+                            This is pop tooltip content!!
+                        </div>
+                    </div>
+
+                    <!-- 盒子类型提示层 -->
+                    <div class="xui-tooltip-box" style="position: relative;width: 200px;margin: 20px;">            
+                        <div class="xui-tip-content">
+                            This is box tooltip content!!
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </section>
+            <section class="doc-section">
+                <h2 id="s4">其他</h2>
+                <h4 id="s41">浏览器分级</h4>
+                <div class="inner-content">
+                    <ul>
+                        <li>A级：桌面现代浏览器，包含IE9+/Chrome/Safari/Firefox/Opera/Webkit内核系列</li>
+                        <li>B级：IE8</li>
+                        <li>C级：IE7</li>
+                    </ul>
+                    <p>CSS3优先，兼容优先级：A > B > C</p>
+                </div>
+                <hr>
+                <h4 id="s42">响应式方案</h4>
+                <div class="inner-content">
+                    <p>页面宽度为980px-1180px</p>
+                    
+                    <table class="doc-table">
+                        <tr>
+                            <th>方案</th>
+                            <th>浏览器可见宽度≥1200px</th>
+                            <th>浏览器可见宽度＜1200px</th>
+                        </tr>
+                        <tr>
+                            <td>半响应式<br><em style="color:red;">优先使用</em></td>
+                            <td>
+                                <strong>页面宽度为1180px</strong>
+                                <p>默认宽度</p>                                
+                            </td>
+                            <td>
+                                <strong>页面宽度为980px</strong>
+                                <ul>
+                                    <li>A级浏览器用MediaQuery</li>
+                                    <li>BC级使用JS(ie-8.js)判断并给body添加tablet类</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>自适应式</td>
+                            <td>  
+                                <ul>
+                                    <li>AB级浏览器用min-width: 980px;</li>
+                                    <li>C级浏览器用定宽1180px</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>AB级浏览器用max-width: 1180px;</li>
+                                    <li>C级浏览器用定宽1180px</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <hr>
+            </section>
+        </article>
+    </div>
+</body>
+</html>
